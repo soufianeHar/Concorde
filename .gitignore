@@ -1,15 +1,19 @@
-# Node
+@'
+# Node / Next
 frontend/node_modules
 frontend/.next
+frontend/.turbo
 frontend/.env.local
 
-# Python
+# Python / FastAPI
 backend/__pycache__/
-backend/.env
 backend/.venv/
 backend/venv/
+backend/.env
 
-# System
+# System / IDE
 .DS_Store
-.idea/
+Thumbs.db
 .vscode/
+.idea/
+'@ | Out-File -Encoding UTF8 .gitignore
