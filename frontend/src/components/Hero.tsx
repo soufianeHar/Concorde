@@ -2,10 +2,11 @@ export default function Hero() {
   return (
     <section
       id="accueil"
-      className="flex flex-col items-center justify-center text-center py-24 px-6"
+      className="snap-section justify-center text-center px-6"
     >
       <h1
         className="
+          animate-fade-in-up
           text-4xl md:text-6xl font-semibold leading-snug
           bg-gradient-to-r from-[#4AD4F4] via-[#6FAEF4] to-[#A46CF4]
           text-transparent bg-clip-text

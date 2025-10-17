@@ -26,3 +26,46 @@ body {
 }
 html, body { background: #f4f7fb; }  /* gris très clair */
 html, body { scroll-behavior: smooth; }
+/* Animations légères */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp .9s ease-out both;
+}
+
+/* Marge d’ancre pour compenser la navbar sticky */
+section { scroll-margin-top: 96px; } /* ~ hauteur nav */
+/* Fullpage sections with scroll-snap */
+html, body { height: 100%; }              /* plein écran possible */
+
+body.snap {                               /* active le snap au niveau du document */
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section {                            /* à mettre sur chaque section “écran” */
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;                     /* centre verticalement */
+}
+
+/* Mobile : meilleure UX sans snap */
+@media (max-width: 767px) {
+  body.snap { scroll-snap-type: none; }
+}
+.card-shine { position: relative; overflow: hidden; }
+.card-shine::after{
+  content:"";
+  position:absolute;
+  top:-120%; left:-120%;
+  height:340%; width:60%;
+  transform: rotate(25deg) translateX(0);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  transition: transform .6s ease;
+  pointer-events: none;
+}
+.card-shine:hover::after{
+  transform: rotate(25deg) translateX(260%);
+}
