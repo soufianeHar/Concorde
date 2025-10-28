@@ -7,6 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from .database import Base, engine, get_db
 from .models import Ping, User
 from .security import hash_password, verify_password, create_access_token, decode_token
+from .routes.needs import router as needs_router
 
 class Settings(BaseSettings):
     ENV: str = "dev"
@@ -111,3 +112,5 @@ def me(request: Request, db: Session = Depends(get_db)):
     if not u:
         raise HTTPException(status_code=401, detail="Utilisateur introuvable.")
     return u
+
+app.include_router(needs_router)

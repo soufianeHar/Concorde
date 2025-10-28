@@ -18,3 +18,15 @@ export async function getJSON<T>(url: string) {
   if (!res.ok) throw new Error((json as any)?.detail || "Erreur serveur");
   return json as T;
 }
+export async function postVoid(url: string, body?: unknown) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) {
+    const json = await res.json().catch(() => ({}));
+    throw new Error((json as any)?.detail || "Erreur serveur");
+  }
+}

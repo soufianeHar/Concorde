@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { getJSON, API } from "@/lib/api";
+import LogoutButton from "@/components/LogoutButton";
 
 type Me = { id: number; first_name: string; last_name: string; email: string };
 
@@ -41,7 +42,14 @@ export default function DashboardPage() {
   const fullName = `${me.first_name} ${me.last_name}`.trim();
 
   return (
+
     <main className="min-h-screen flex flex-col bg-[#f4f7fb]">
+      <div className="px-6 py-4 flex items-center justify-between">
+        <div className="text-2xl font-semibold bg-gradient-to-r from-[#4AD4F4] via-[#6FAEF4] to-[#A46CF4] bg-clip-text text-transparent">
+          Concorde
+        </div>
+        <LogoutButton />
+      </div>
       <section className="flex-1 flex flex-col items-center justify-center px-6 text-center">
         <h1 className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-[#4AD4F4] via-[#6FAEF4] to-[#A46CF4] bg-clip-text text-transparent drop-shadow-[0_3px_6px_rgba(0,0,0,0.12)]">
           Bonjour, {fullName} !
